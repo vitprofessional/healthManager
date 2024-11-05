@@ -18,7 +18,7 @@ Dashboard
                                 </span>
                             </div>
                             <div class="flex-grow-1 overflow-hidden ms-3">
-                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Pending List</p>
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Division Admin</p>
                                 <div class="d-flex align-items-center mb-3">
                                     <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value" data-target="825">0</span></h4>
                                 </div>
@@ -39,7 +39,7 @@ Dashboard
                                 </span>
                             </div>
                             <div class="flex-grow-1 ms-3">
-                                <p class="text-uppercase fw-medium text-muted mb-3">Total Register</p>
+                                <p class="text-uppercase fw-medium text-muted mb-3">Disctict Admin</p>
                                 <div class="d-flex align-items-center mb-3">
                                     <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value" data-target="7522">0</span></h4>
                                 </div>
@@ -60,7 +60,7 @@ Dashboard
                                 </span>
                             </div>
                             <div class="flex-grow-1 overflow-hidden ms-3">
-                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Total Student</p>
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Thana Admin</p>
                                 <div class="d-flex align-items-center mb-3">
                                     <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value" data-target="168">0</span></h4>
                                 </div>
@@ -80,7 +80,7 @@ Dashboard
                                 </span>
                             </div>
                             <div class="flex-grow-1 overflow-hidden ms-3">
-                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Total Guest</p>
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">UP Admin</p>
                                 <div class="d-flex align-items-center mb-3">
                                     <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value" data-target="825">0</span></h4>
                                 </div>
