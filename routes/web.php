@@ -38,6 +38,11 @@ Route::get('/admin/new/admin/create',[
     'newAdmin'
 ])->name('newAdmin');
 
+Route::get('/admin/admin/create/confirm',[
+    SuperAdminPanel::class,
+    'confirmAdminSignup'
+])->name('confirmAdminSignup');
+
 Route::get('/admin/kyc/report',[
     SuperAdminPanel::class,
     'kycReport'
