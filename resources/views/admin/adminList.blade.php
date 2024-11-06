@@ -24,36 +24,27 @@ Admin List
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
-                        <th>Department</th>
-                        <th>Shift</th>
-                        <th>Total Participat</th>
-                        <th>Payment Method</th>
-                        <th>Amount</th>
-                        <th>TXN ID</th>
+                        <th>Admin Type</th>
+                        <th>User ID</th>
+                        <th>Password</th>
                         <th>Action</th>
                     </thead>
                     <thead>
-                        @if(!empty($pendingList) && count($pendingList)>0)
+                        @if(!empty($adminList) && count($adminList)>0)
                             @php
                                 $x = 1;
                             @endphp
-                            @foreach($pendingList as $pending)
+                            @foreach($adminList as $admin)
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
-                                    <td class="align-middle text-center">{{ $pending->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $pending->department  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->shift  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->totalAttend  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentBy }}</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentAmount  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentId  }}</td>
+                                    <td class="align-middle text-center">{{ $admin->adminName }}</td>
+                                    <td class="align-middle text-center">{{ $admin->adminType  }}</td>
+                                    <td class="align-middle text-center">{{ $admin->userId  }}</td>
+                                    <td class="align-middle text-center">{{ $admin->plainPassword  }}</td>
                                     <td class="align-middle text-center">
-                                        <a href="{{ route('acceptRegister',['id'=>$pending->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-success btn-sm my-1">
-                                            <i class="fa-solid fa-badge-check"></i>
+                                        <a href="{{ route('editAdmin',['id'=>$admin->id]) }}" class="btn btn-success btn-sm my-1">
+                                            <i class="fa-solid fa-pencil-square"></i>
                                         </a> 
-                                        <a href="{{ route('rejectRegister',['id'=>$pending->id]) }}" onclick="alert('Are you sure to reject/cancel the register? It can not be undone')" class="btn btn-danger btn-sm my-1">
-                                            <i class="fa-sharp fa-regular fa-circle-xmark"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             @php
