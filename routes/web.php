@@ -70,6 +70,8 @@ Route::post('/admin/update/user',[
     'updateGener'
 ])->name('updateGener');
 
+// card route declaration
+
 
 // all reports route declaration
 Route::get('/admin/kyc/report',[
