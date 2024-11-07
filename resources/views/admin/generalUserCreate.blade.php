@@ -5,7 +5,7 @@ General User
 @section('adminContent')
 
 <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6 col-xl-5">
+    <div class="col-md-10 col-12 mx-auto">
         <div class="card mt-4">
             <div class="card-body p-4">
                 <div class="text-center mt-2">
@@ -23,49 +23,50 @@ General User
                 </div>
                 @endif
                 <div class="p-2 mt-4">
-                    <form method="POST" action="{{ route('confirmGeneralUser') }}">
+                    <form method="POST" class="form row" action="{{ route('confirmGeneralUser') }}">
                         @csrf
-                        <div class="mb-3">
-                            <label for="fullName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter admin fullname" name="fullName">
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="fullName" class="form-label">Name<span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter admin fullname" name="fullName" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="category" class="form-label">Admin Category(*)</label>
-                            <select id="category" class="form-select" required name="category">
-                                <option selected>Choose...</option>
-                                <option>Division Admin</option>
-                                <option>District Admin</option>
-                                <option>Thana Admin</option>
-                                <option>Union Producure</option>
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="userId" class="form-label">User ID/Email<span class="text-danger">(*)</span></label>
+                            <input type="email" class="form-control" id="userId" placeholder="Enter admin userId" required name="userId">
+                        </div>
+                        
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="cardNo" class="form-label">Card No<span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="cardNo" placeholder="Enter activation card number" required name="cardNo" maxlength="11">
+                        </div>
+                        
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="pinNumber" class="form-label">Pin Number<span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="pinNumber" placeholder="Enter card pin number" required name="pinNumber" maxlength="6">
+                        </div>
+                        
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" placeholder="Enter date of birth" name="dob">
+                        </div>
+                        
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="Enter user full address" name="address">
+                        </div>
+                        
+                        <div class="mb-3 col-12 col-md-6">
+                            <label for="blGroup" class="form-label">Blood Group(*)</label>
+                            <select id="blGroup" class="form-select" name="blGroup">
+                                <option value="" selected>Choose...</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="adminRule" class="form-label">Type of Admin(*)</label>
-                            <select id="adminRule" class="form-select" required name="adminRule">
-                                <option selected>Choose...</option>
-                                <option>Admin</option>
-                                <option>Producer</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="userId" class="form-label">User ID/Email</label>
-                            <input type="text" class="form-control" id="userId" placeholder="Enter admin userId" required name="userId">
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password" name="password">
-                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <label for="confirmPass" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control pe-5 password-input" placeholder="Confirm password" id="confirmPass" name="confirmPass">
-                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                            </div>
                         </div>
 
                         <div class="mt-4">

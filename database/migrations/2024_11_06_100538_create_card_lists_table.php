@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('card_lists', function (Blueprint $table) {
             $table->id();
             $table->string('cardNo')->nullable();
+            $table->string('category')->nullable();
             $table->string('pinNumber')->nullable();
             $table->string('linkUser')->nullable();
             $table->string('activeDate')->nullable();

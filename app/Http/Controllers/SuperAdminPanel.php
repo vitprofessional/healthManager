@@ -67,32 +67,28 @@ class SuperAdminPanel extends Controller
     }
 
     public function userList(){
-        $adminList = AdminList::orderBy('id','DESC')->get();
-        return view('admin.adminList',['adminList'=>$adminList]);
+        $userList = UserList::orderBy('id','DESC')->get();
+        return view('admin.userList',['userList'=>$userList]);
     }
 
     public function confirmGeneralUser(Request $requ){
-        $chk = AdminList::where(['userId'=>$requ->userId])->first();
+        $chk = UserList::where(['email'=>$requ->userId])->first();
         $hashPass ="";
         // check if user already exist
         if(!empty($chk)):
-            return back()->with('error','Admin profile already exist(userId)');
+            return back()->with('error','User profile already exist(userId)');
         endif;
-        // check if password match
-        if($requ->password != $requ->confirmPass):
-            return back()->with('error','Password does not match with confirm password');
-        else:
-            // password hashing
-            $hashPass = Hash::make($requ->password);
-        endif;
+        $hashPass = Hash::make($requ->pinNumber);
 
-        $admin = new AdminList();
+        $admin = new UserList();
 
         $admin->fullName    = $requ->fullName;
-        $admin->userId      = $requ->userId;
-        $admin->adminType   = $requ->category;
-        $admin->adminRule   = $requ->adminRule;
-        $admin->password    = $hashPass;
+        $admin->email       = $requ->userId;
+        $admin->cardNo      = $requ->cardNo;
+        $admin->address     = $requ->address;
+        $admin->pinNumber   = $hashPass;
+        $admin->blGroup     = $requ->blGroup;
+        $admin->dob         = $requ->dob;
         $admin->status      = "Active";
         if($admin->save()):
             return back()->with('success','User profile created successfully');

@@ -29,15 +29,20 @@ Route::get('/admin/new/create',[
     'newAdmin'
 ])->name('newAdmin');
 
+Route::post('/admin/new/create/confirm',[
+    SuperAdminPanel::class,
+    'confirmAdminSignup'
+])->name('confirmAdminSignup');
+
 Route::get('/admin/edit/{id}',[
     SuperAdminPanel::class,
     'editAdmin'
 ])->name('editAdmin');
 
-Route::post('/admin/new/create/confirm',[
+Route::post('/admin/update',[
     SuperAdminPanel::class,
-    'confirmAdminSignup'
-])->name('confirmAdminSignup');
+    'updateAdmin'
+])->name('updateAdmin');
 
 // general user routes declaration
 Route::get('/admin/user',[
@@ -50,10 +55,21 @@ Route::get('/admin/new/user/create',[
     'createGeneralUser'
 ])->name('createGeneralUser');
 
-Route::post('/admin/new/user/create',[
+Route::post('/admin/user/create/confirm',[
     SuperAdminPanel::class,
     'confirmGeneralUser'
 ])->name('confirmGeneralUser');
+
+Route::get('/admin/edit/user/{id}',[
+    SuperAdminPanel::class,
+    'editUser'
+])->name('editUser');
+
+Route::post('/admin/update/user',[
+    SuperAdminPanel::class,
+    'updateGener'
+])->name('updateGener');
+
 
 // all reports route declaration
 Route::get('/admin/kyc/report',[
