@@ -209,9 +209,19 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link @if(Route::is('activationCharge')) active @endif" href="{{ route('activationCharge') }}">
-                                <i class="fa-solid fa-badge-dollar"></i> <span data-key="t-apps">Activation Charge</span>
+                            <a class="nav-link menu-link" href="#cardManager" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="cardManager">
+                                <i class="fa-solid fa-badge-dollar"></i> <span data-key="t-apps">Card Manager</span>
                             </a>
+                            <div class="collapse menu-dropdown" id="cardManager">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('adminList') }}" class="nav-link @if(Route::is('adminList')) active @endif"> <span data-key="t-file-manager">New Card</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('activationCharge') }}" class="nav-link @if(Route::is('activationCharge')) active @endif"> <span data-key="t-file-manager">Activation Charge</span></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link @if(Route::is('adminProfile')) active @endif" href="{{ route('adminProfile') }}">

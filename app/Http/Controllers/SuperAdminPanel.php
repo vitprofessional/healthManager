@@ -101,4 +101,29 @@ class SuperAdminPanel extends Controller
         $userData = UserList::find($id);
         return view('admin.editUserProfile',['user'=>$userData]);
     }
+
+    // card manager controller
+    public function newCard(){
+        return view('admin.cardCreation');
+    }
+
+    public function saveCard(Request $requ){
+        $chk = CardList::where(['cardNo'=>$requ->cardNo])->first();
+        if(!empty($chk)):
+            return back()->with('error','Card already exist on our database');
+        endif;
+
+        $card = new CardList();
+
+        $cardPin = rand(0,999999);
+
+        $card->cardNo = $requ->cardNo;
+        $card->pinNumber = $cardPin;
+        $card->category = $requ->category;
+        if($card->save()):
+            return back()->with('success','Card creation successfully');
+        else:
+            return back()->with('error','There was and error. Please try later');
+        endif;
+    }
 }

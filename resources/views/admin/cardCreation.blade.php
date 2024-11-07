@@ -23,7 +23,7 @@ New Card
                 </div>
                 @endif
                 <div class="p-2 mt-4">
-                    <form method="POST" action="{{ route('confirmCard') }}">
+                    <form method="POST" action="{{ route('saveCard') }}">
                         @csrf
                         <div class="mb-3">
                             <label for="cardNo" class="form-label">Card Number</label>
