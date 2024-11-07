@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('card_charges', function (Blueprint $table) {
             $table->id();
+            $table->string('cardType')->nullable();
+            $table->string('expiredTime')->nullable();
+            $table->string('charge')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

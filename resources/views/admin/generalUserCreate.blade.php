@@ -1,6 +1,6 @@
 @extends('admin.include')
 @section('adminTitle')
-Admin Profile
+General User
 @endsection
 @section('adminContent')
 
@@ -9,7 +9,7 @@ Admin Profile
         <div class="card mt-4">
             <div class="card-body p-4">
                 <div class="text-center mt-2">
-                    <h5 class="text-primary">Create Admin Profile!</h5>
+                    <h5 class="text-primary">Create User Profile!</h5>
                 </div>
                 
                 @if(Session::has('success'))
@@ -23,7 +23,7 @@ Admin Profile
                 </div>
                 @endif
                 <div class="p-2 mt-4">
-                    <form method="POST" action="{{ route('confirmAdminSignup') }}">
+                    <form method="POST" action="{{ route('confirmGeneralUser') }}">
                         @csrf
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Name</label>

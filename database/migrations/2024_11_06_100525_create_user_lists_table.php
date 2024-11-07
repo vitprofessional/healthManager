@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('user_lists', function (Blueprint $table) {
             $table->id();
+            $table->string('fullName')->nullable();
+            $table->string('userCategory')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('cardNo')->nullable();
+            $table->string('pinNumber')->nullable();
+            $table->string('activeBy')->nullable();
+            $table->string('email')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('blGroup')->nullable();
+            $table->string('address')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

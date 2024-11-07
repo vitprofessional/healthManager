@@ -1,3 +1,8 @@
+@php
+    $string = Route::current()->getName();
+    $words = preg_replace('/(?<!\ )[A-Z]/', ' $0', $string);
+@endphp
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
@@ -154,16 +159,16 @@
                         </li>
                         <!-- end Dashboard Menu -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#customerMenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="customerMenu">
-                                <i class="fa-regular fa-users"></i> <span data-key="t-user">Customer Panel</span>
+                            <a class="nav-link menu-link" href="#generalUser" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="generalUser">
+                                <i class="fa-regular fa-users"></i> <span data-key="t-user">User Panel</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="customerMenu">
+                            <div class="collapse menu-dropdown" id="generalUser">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('customerList') }}" class="nav-link @if(Route::is('customerList')) active @endif" data-key="t-users"> Customer List </a>
+                                        <a href="{{ route('userList') }}" class="nav-link @if(Route::is('userList')) active @endif" data-key="t-users"> User List </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('newCustomer') }}" class="nav-link @if(Route::is('newCustomer')) active @endif"> <span data-key="t-user-secret">New Profile</span></a>
+                                        <a href="{{ route('createGeneralUser') }}" class="nav-link @if(Route::is('createGeneralUser')) active @endif"> <span data-key="t-user-secret">New Profile</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -198,7 +203,7 @@
                                         <a href="{{ route('adminList') }}" class="nav-link @if(Route::is('adminList')) active @endif"> <span data-key="t-file-manager">Admin List</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('customerList') }}" class="nav-link @if(Route::is('customerList')) active @endif"> <span data-key="t-file-manager">Customer List</span></a>
+                                        <a href="{{ route('userList') }}" class="nav-link @if(Route::is('userList')) active @endif"> <span data-key="t-file-manager">Customer List</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -241,12 +246,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Home</h4>
+                                <h4 class="mb-sm-0">{{ ucfirst($words) }}</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                        <li class="breadcrumb-item active">Home</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('adminHome') }}">Dashboards</a></li>
+                                        <li class="breadcrumb-item active">{{ ucfirst($words) }}</li>
                                     </ol>
                                 </div>
 

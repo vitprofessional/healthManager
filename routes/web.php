@@ -18,31 +18,44 @@ Route::get('/admin/home',[
     'index'
 ])->name('adminHome');
 
-Route::get('/admin/customer',[
-    SuperAdminPanel::class,
-    'customer'
-])->name('customerList');
-
-Route::get('/admin/new/customer/create',[
-    SuperAdminPanel::class,
-    'newCustomer'
-])->name('newCustomer');
-
+// admin routes declaration
 Route::get('/admin/list/allAdmin',[
     SuperAdminPanel::class,
     'adminList'
 ])->name('adminList');
 
-Route::get('/admin/new/admin/create',[
+Route::get('/admin/new/create',[
     SuperAdminPanel::class,
     'newAdmin'
 ])->name('newAdmin');
 
-Route::get('/admin/admin/create/confirm',[
+Route::get('/admin/edit/{id}',[
+    SuperAdminPanel::class,
+    'editAdmin'
+])->name('editAdmin');
+
+Route::post('/admin/new/create/confirm',[
     SuperAdminPanel::class,
     'confirmAdminSignup'
 ])->name('confirmAdminSignup');
 
+// general user routes declaration
+Route::get('/admin/user',[
+    SuperAdminPanel::class,
+    'userList'
+])->name('userList');
+
+Route::get('/admin/new/user/create',[
+    SuperAdminPanel::class,
+    'createGeneralUser'
+])->name('createGeneralUser');
+
+Route::post('/admin/new/user/create',[
+    SuperAdminPanel::class,
+    'confirmGeneralUser'
+])->name('confirmGeneralUser');
+
+// all reports route declaration
 Route::get('/admin/kyc/report',[
     SuperAdminPanel::class,
     'kycReport'
