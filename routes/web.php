@@ -80,6 +80,16 @@ Route::post('/admin/update/user',[
     'updateGeneralUser'
 ])->name('updateGeneralUser');
 
+Route::get('/admin/user/pin/change/{id}',[
+    SuperAdminPanel::class,
+    'changeUserPin'
+])->name('changeUserPin');
+
+Route::post('/admin/user/pin/update',[
+    SuperAdminPanel::class,
+    'updateUserPin'
+])->name('updateUserPin');
+
 // card route declaration
 Route::get('/admin/card/list',[
     SuperAdminPanel::class,

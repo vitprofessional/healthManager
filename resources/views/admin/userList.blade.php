@@ -56,6 +56,7 @@ User List
                         @endif
                     </thead>
                 </table>
+                <a href="{{ route('createGeneralUser') }}" class="btn btn-danger fw-bold btn-sm"><i class="fa-duotone fa-solid fa-plus-square"></i> Add New</a>
             </div>
         </div>
     </div>

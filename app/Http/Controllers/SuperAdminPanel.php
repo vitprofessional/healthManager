@@ -148,7 +148,51 @@ class SuperAdminPanel extends Controller
 
     public function editUser($id){
         $userData = UserList::find($id);
-        return view('admin.editUserProfile',['user'=>$userData]);
+        return view('admin.editGeneralUser',['user'=>$userData]);
+    }
+
+    public function updateGeneralUser(Request $requ){
+        $admin = UserList::find($requ->id);
+        // check if user already exist
+        if(empty($admin)):
+            return back()->with('error','No data found to update');
+        endif;
+
+        $admin->fullName    = $requ->fullName;
+        $admin->email       = $requ->userId;
+        $admin->cardNo      = $requ->cardNo;
+        $admin->address     = $requ->address;
+        $admin->blGroup     = $requ->blGroup;
+        $admin->dob         = $requ->dob;
+        $admin->status      = $requ->status;
+        if($admin->save()):
+            return back()->with('success','User profile updated successfully');
+        else:
+            return back()->with('error','User profile failed to update');
+        endif;
+    }
+
+    public function changeUserPin($id){
+        $userData = UserList::find($id);
+        return view('admin.userPin',['user'=>$userData]);
+    }
+
+    public function updateUserPin(Request $requ){
+        $user = UserList::find($requ->userId);
+        // check if user already exist
+        if(empty($user)):
+            return back()->with('error','No data found for update');
+        endif;
+
+        $hashPass = Hash::make($requ->pinNumber);
+
+        $user->pinNumber    = $hashPass;
+
+        if($user->save()):
+            return back()->with('success','User pin changed successfully');
+        else:
+            return back()->with('error','User pin failed to update');
+        endif;
     }
 
     // card manager controller
