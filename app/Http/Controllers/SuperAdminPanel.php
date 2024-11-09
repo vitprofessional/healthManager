@@ -59,6 +59,55 @@ class SuperAdminPanel extends Controller
         $adminData = AdminList::find($id);
         return view('admin.editAdminProfile',['admin'=>$adminData]);
     }
+
+    public function updateAdmin(Request $requ){
+        $admin = AdminList::find($requ->adminId);
+
+        // check if query has data
+        if(empty($admin)):
+            return back()->with('error','No data found for update');
+        endif;
+
+        $admin->fullName    = $requ->fullName;
+        $admin->userId      = $requ->userId;
+        $admin->adminType   = $requ->category;
+        $admin->adminRule   = $requ->adminRule;
+        $admin->status      = $requ->status;
+        if($admin->save()):
+            return back()->with('success','Admin profile updated successfully');
+        else:
+            return back()->with('error','Admin profile failed to update');
+        endif;
+    }
+
+    public function changeAdminPass($id){
+        $adminData = AdminList::find($id);
+        return view('admin.adminPass',['admin'=>$adminData]);
+    }
+
+    public function updateAdminPass(Request $requ){
+        $admin = AdminList::find($requ->adminId);
+        $hashPass ="";
+        // check if user already exist
+        if(empty($admin)):
+            return back()->with('error','No data found for update');
+        endif;
+        // check if password match
+        if($requ->password != $requ->confirmPass):
+            return back()->with('error','Password does not match with confirm password');
+        else:
+            // password hashing
+            $hashPass = Hash::make($requ->password);
+        endif;
+
+        $admin->password    = $hashPass;
+
+        if($admin->save()):
+            return back()->with('success','Admin password changed successfully');
+        else:
+            return back()->with('error','Password failed to update');
+        endif;
+    }
     
     
     // general user controller
@@ -103,6 +152,11 @@ class SuperAdminPanel extends Controller
     }
 
     // card manager controller
+    public function cardList(){
+        $cardList = CardList::orderBy('id','DESC')->get();
+        return view('admin.cardList',['cardList'=>$cardList]);
+    }
+
     public function newCard(){
         return view('admin.cardCreation');
     }
@@ -117,11 +171,54 @@ class SuperAdminPanel extends Controller
 
         $cardPin = rand(0,999999);
 
-        $card->cardNo = $requ->cardNo;
-        $card->pinNumber = $cardPin;
-        $card->category = $requ->category;
+        $card->cardNo       = $requ->cardNo;
+        $card->pinNumber    = $cardPin;
+        $card->category     = $requ->category;
         if($card->save()):
             return back()->with('success','Card creation successfully');
+        else:
+            return back()->with('error','There was and error. Please try later');
+        endif;
+    }
+
+    public function editCard($id){
+        $cardData = CardList::find($id);
+        return view('admin.editCard',['card'=>$cardData]);
+    }
+
+    public function updateCard(Request $requ){
+        $card = CardList::find($requ->cardId);
+        if(empty($card)):
+            return back()->with('error','Data not found for update');
+        endif;
+
+        $card->cardNo       = $requ->cardNo;
+        $card->pinNumber    = $requ->pinNumber;
+        $card->category     = $requ->category;
+        if($card->save()):
+            return back()->with('success','Card details update successfully');
+        else:
+            return back()->with('error','There was and error. Please try later');
+        endif;
+    }
+
+    public function activationCharge(){
+        return view('admin.activationCharge');
+    }
+
+    public function saveCharge(Request $requ){
+        $chk = CardCharge::where(['cardType'=>$requ->category,'charge'=>$requ->charge])->first();
+        if(!empty($chk)):
+            return back()->with('error','Charge already exist on our database');
+        endif;
+
+        $card = new CardCharge();
+
+        $card->cardType     = $requ->category;
+        $card->charge       = $requ->charge;
+        $card->expiredTime  = $requ->expiredTime;
+        if($card->save()):
+            return back()->with('success','Charge setup successfully');
         else:
             return back()->with('error','There was and error. Please try later');
         endif;

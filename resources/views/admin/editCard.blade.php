@@ -1,6 +1,6 @@
 @extends('admin.include')
 @section('adminTitle')
-New Card
+Update Card
 @endsection
 @section('adminContent')
 
@@ -9,7 +9,7 @@ New Card
         <div class="card mt-4">
             <div class="card-body p-4">
                 <div class="text-center mt-2">
-                    <h5 class="text-primary">Create New Card!</h5>
+                    <h5 class="text-primary">Update Card Details!</h5>
                 </div>
                 
                 @if(Session::has('success'))
@@ -23,16 +23,22 @@ New Card
                 </div>
                 @endif
                 <div class="p-2 mt-4">
-                    <form method="POST" action="{{ route('saveCard') }}">
+                    @if(!empty($card))
+                    <form method="POST" action="{{ route('updateCard') }}">
                         @csrf
+                        <input type="hidden" name="cardId" value="{{ $card->id }}">
                         <div class="mb-3">
                             <label for="cardNo" class="form-label">Card Number</label>
-                            <input type="text" class="form-control" id="cardNo" placeholder="Enter card number" name="cardNo" maxlength="11">
+                            <input type="text" class="form-control" id="cardNo" placeholder="Enter card number" value="{{ $card->cardNo }}" name="cardNo" maxlength="11">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pinNumber" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="pinNumber" placeholder="Enter card pin number" value="{{ $card->pinNumber }}" name="pinNumber" maxlength="6">
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Card Category(*)</label>
                             <select id="category" class="form-select" required name="category">
-                                <option value="" selected>Choose...</option>
+                                <option value="{{ $card->category }}" selected>{{ $card->category }}</option>
                                 <option>Silver</option>
                                 <option>Gold</option>
                                 <option>Premium</option>
@@ -40,9 +46,12 @@ New Card
                         </div>
 
                         <div class="mt-4">
-                            <button class="btn btn-success w-100" type="submit">Add Card</button>
+                            <button class="btn btn-success w-100" type="submit">Update</button>
                         </div>
                     </form>
+                    @else
+                    <div class="alert alert-info">Sorry! No details found with your query</div>
+                    @endif
                     <a href="{{ route('cardList') }}" class="btn btn-primary fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-list"></i> All Card</a>
                     <a href="{{ route('activationCharge') }}" class="btn btn-danger fw-bold btn-sm mt-4"><i class="fa-sharp fa-solid fa-hand-holding-heart"></i> Charge Setup</a>
                 </div>

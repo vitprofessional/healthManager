@@ -23,16 +23,18 @@ Admin Profile
                 </div>
                 @endif
                 <div class="p-2 mt-4">
-                    <form method="POST" action="{{ route('confirmAdminSignup') }}">
+                    @if(!empty($admin))
+                    <form method="POST" action="{{ route('updateAdmin') }}">
                         @csrf
+                        <input type="hidden" name="adminId" value="{{ $admin->id }}">
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter admin fullname" name="fullName">
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter admin fullname" name="fullName" value="{{ $admin->fullName }}">
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Admin Category(*)</label>
                             <select id="category" class="form-select" required name="category">
-                                <option selected>Choose...</option>
+                            <option selected value="{{ $admin->adminType }}">{{ $admin->adminType }}</option>
                                 <option>Division Admin</option>
                                 <option>District Admin</option>
                                 <option>Thana Admin</option>
@@ -42,34 +44,32 @@ Admin Profile
                         <div class="mb-3">
                             <label for="adminRule" class="form-label">Type of Admin(*)</label>
                             <select id="adminRule" class="form-select" required name="adminRule">
-                                <option selected>Choose...</option>
+                            <option selected value="{{ $admin->adminRule }}">{{ $admin->adminRule }}</option>
                                 <option>Admin</option>
                                 <option>Producer</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="userId" class="form-label">User ID/Email</label>
-                            <input type="text" class="form-control" id="userId" placeholder="Enter admin userId" required name="userId">
+                            <input type="text" class="form-control" id="userId" placeholder="Enter admin userId" value="{{ $admin->userId }}" required name="userId">
                         </div>
-
                         <div class="mb-3">
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password" name="password">
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <label for="confirmPass" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control pe-5 password-input" placeholder="Confirm password" id="confirmPass" name="confirmPass">
-                            </div>
+                            <label for="status" class="form-label">Status</label>
+                            <select name="status" id="" class="form-select">
+                                <option value="{{ $admin->status }}">{{ $admin->status }}</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
                         </div>
 
                         <div class="mt-4">
-                            <button class="btn btn-success w-100" type="submit">Create Profile</button>
+                            <button class="btn btn-success w-100" type="submit">Update Profile</button>
                         </div>
                     </form>
+                    @else
+                    <div class="alert alert-info">Sorry! No data found with your query</div>
+                    @endif
+                    <a href="{{ route('changeAdminPass',['id'=>$admin->id]) }}" class="btn btn-danger fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-key"></i> Change Password</a>
                     <a href="{{ route('adminList') }}" class="btn btn-primary fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-list"></i> List of Admin</a>
                 </div>
             </div>

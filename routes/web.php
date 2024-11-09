@@ -44,6 +44,16 @@ Route::post('/admin/update',[
     'updateAdmin'
 ])->name('updateAdmin');
 
+Route::get('/admin/password/change/{id}',[
+    SuperAdminPanel::class,
+    'changeAdminPass'
+])->name('changeAdminPass');
+
+Route::post('/admin/password/update',[
+    SuperAdminPanel::class,
+    'updateAdminPass'
+])->name('updateAdminPass');
+
 // general user routes declaration
 Route::get('/admin/user',[
     SuperAdminPanel::class,
@@ -75,26 +85,36 @@ Route::get('/admin/card/list',[
     SuperAdminPanel::class,
     'cardList'
 ])->name('cardList');
+
 Route::get('/admin/card/new',[
     SuperAdminPanel::class,
     'newCard'
 ])->name('newCard');
+
 Route::post('/admin/card/save',[
     SuperAdminPanel::class,
     'saveCard'
 ])->name('saveCard');
+
 Route::get('/admin/card/edit/{id}',[
     SuperAdminPanel::class,
     'editCard'
 ])->name('editCard');
+
 Route::post('/admin/card/update',[
     SuperAdminPanel::class,
     'updateCard'
 ])->name('updateCard');
+
 Route::get('/admin/card/charge/settings',[
     SuperAdminPanel::class,
     'activationCharge'
 ])->name('activationCharge');
+
+Route::post('/admin/card/charge/save',[
+    SuperAdminPanel::class,
+    'saveCharge'
+])->name('saveCharge');
 
 // all reports route declaration
 Route::get('/admin/kyc/report',[
