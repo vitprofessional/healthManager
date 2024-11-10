@@ -70,10 +70,10 @@ Update General User
                             <button class="btn btn-success w-100" type="submit">Update Profile</button>
                         </div>
                     </form>
+                    <a href="{{ route('changeUserPin',['id'=>$user->id]) }}" class="btn btn-danger fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-key"></i> Change Pin</a>
                     @else
                     <div class="alert alert-info">Sorry! No data found</div>
                     @endif
-                    <a href="{{ route('changeUserPin',['id'=>$user->id]) }}" class="btn btn-danger fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-key"></i> Change Pin</a>
                     <a href="{{ route('userList') }}" class="btn btn-primary fw-bold btn-sm mt-4"><i class="fa-duotone fa-solid fa-list"></i> All User</a>
                 </div>
             </div>

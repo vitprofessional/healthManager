@@ -8,6 +8,7 @@ use App\Models\CardList;
 use App\Models\UserList;
 use App\Models\CardCharge;
 use Hash;
+use Session;
 
 class SuperAdminPanel extends Controller
 {
@@ -266,5 +267,11 @@ class SuperAdminPanel extends Controller
         else:
             return back()->with('error','There was and error. Please try later');
         endif;
+    }
+
+    // authorized profile controllers
+    public function myProfile(){
+        $profile = AdminList::find(Session::get('authAdmin'));
+        return view('admin.myProfile',['my'=>$profile]);
     }
 }

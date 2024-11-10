@@ -36,7 +36,8 @@ Admin Profile
                                 <option>Division Admin</option>
                                 <option>District Admin</option>
                                 <option>Thana Admin</option>
-                                <option>Union Producure</option>
+                                <option>Union Admin</option>
+                                <option>Union Manager</option>
                             </select>
                         </div>
                         <div class="mb-3">

@@ -227,7 +227,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link @if(Route::is('adminProfile')) active @endif" href="{{ route('adminProfile') }}">
+                            <a class="nav-link menu-link @if(Route::is('myProfile')) active @endif" href="{{ route('myProfile') }}">
                                 <i class="fa-solid fa-gears"></i> <span data-key="t-apps">My Profile</span>
                             </a>
                         </li>
