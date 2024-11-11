@@ -91,6 +91,7 @@ Dashboard
                 </div>
             </div><!-- end col -->
         </div><!-- end row -->
+        {{ Session::get('superAdmin') }}
 
     </div><!-- end col -->
 </div><!-- end row -->

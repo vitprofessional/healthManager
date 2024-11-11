@@ -173,8 +173,6 @@
                                 </ul>
                             </div>
                         </li>
-                        @if(Session::has('superAdmin')):
-                        @endif
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#adminPanel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="adminPanel">
                                 <i class="fa-duotone fa-solid fa-user-secret"></i> <span data-key="t-apps">Admin Panel</span>
@@ -190,6 +188,7 @@
                                 </ul>
                             </div>
                         </li>
+                        @if(Session::has('superAdmin'))
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#cardManager" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="cardManager">
                                 <i class="fa-solid fa-badge-dollar"></i> <span data-key="t-apps">Card Manager</span>
@@ -208,6 +207,7 @@
                                 </ul>
                             </div>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#reportManager" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reportManager">
                                 <i class="fa-duotone fa-solid fa-file-chart-pie"></i> <span data-key="t-apps">Report Manager</span>

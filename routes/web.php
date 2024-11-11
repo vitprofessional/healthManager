@@ -23,12 +23,51 @@ Route::post('/auth/login/confirm',[
     'confirmAdminLogin'
 ])->name('confirmAdminLogin');
 
+Route::middleware(['superAdmin'])->group(function(){
+    // card route declaration
+    Route::get('/admin/card/list',[
+        SuperAdminPanel::class,
+        'cardList'
+    ])->name('cardList');
+
+    Route::get('/admin/card/new',[
+        SuperAdminPanel::class,
+        'newCard'
+    ])->name('newCard');
+
+    Route::post('/admin/card/save',[
+        SuperAdminPanel::class,
+        'saveCard'
+    ])->name('saveCard');
+
+    Route::get('/admin/card/edit/{id}',[
+        SuperAdminPanel::class,
+        'editCard'
+    ])->name('editCard');
+
+    Route::post('/admin/card/update',[
+        SuperAdminPanel::class,
+        'updateCard'
+    ])->name('updateCard');
+
+    Route::get('/admin/card/charge/settings',[
+        SuperAdminPanel::class,
+        'activationCharge'
+    ])->name('activationCharge');
+
+    Route::post('/admin/card/charge/save',[
+        SuperAdminPanel::class,
+        'saveCharge'
+    ])->name('saveCharge');
+});
 Route::middleware(['divisionAdmin','districtAdmin','thanaAdmin','unionAdmin','superAdmin'])->group(function(){
+
     // Super Admin Routes
     Route::get('/admin/home',[
         SuperAdminPanel::class,
         'index'
     ])->name('adminHome');
+
 
     // admin routes declaration
     Route::get('/admin/list/allAdmin',[
@@ -102,41 +141,6 @@ Route::middleware(['divisionAdmin','districtAdmin','thanaAdmin','unionAdmin','su
         'updateUserPin'
     ])->name('updateUserPin');
 
-    // card route declaration
-    Route::get('/admin/card/list',[
-        SuperAdminPanel::class,
-        'cardList'
-    ])->name('cardList');
-
-    Route::get('/admin/card/new',[
-        SuperAdminPanel::class,
-        'newCard'
-    ])->name('newCard');
-
-    Route::post('/admin/card/save',[
-        SuperAdminPanel::class,
-        'saveCard'
-    ])->name('saveCard');
-
-    Route::get('/admin/card/edit/{id}',[
-        SuperAdminPanel::class,
-        'editCard'
-    ])->name('editCard');
-
-    Route::post('/admin/card/update',[
-        SuperAdminPanel::class,
-        'updateCard'
-    ])->name('updateCard');
-
-    Route::get('/admin/card/charge/settings',[
-        SuperAdminPanel::class,
-        'activationCharge'
-    ])->name('activationCharge');
-
-    Route::post('/admin/card/charge/save',[
-        SuperAdminPanel::class,
-        'saveCharge'
-    ])->name('saveCharge');
 
     // all reports route declaration
     Route::get('/admin/kyc/report',[
