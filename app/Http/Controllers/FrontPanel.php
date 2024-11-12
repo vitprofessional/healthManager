@@ -20,7 +20,7 @@ class FrontPanel extends Controller
             if($chkPass):
                 // return $chk->adminType;
                 $requ->session()->regenerate();
-                if($chk->adminType == 'Admin'):
+                if($chk->adminType == 'Admin' || $chk->adminType == 'Super Admin'):
                     $requ->session()->put('superAdmin', $chk->id);
                 endif;
                 if($chk->adminType == 'Division Admin'):
@@ -42,5 +42,14 @@ class FrontPanel extends Controller
         else:
             return back()->with('error','Sorry! No admin rule found with your query');
         endif;
+    }
+    
+
+    public function logout(){
+        Session()->invalidate();
+        Session()->regenerateToken();
+        Session()->flush();
+
+        return redirect(route('adminLogin'))->with('error','Logout successful');
     }
 }

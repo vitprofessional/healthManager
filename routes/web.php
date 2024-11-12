@@ -168,3 +168,8 @@ Route::middleware(['divisionAdmin','districtAdmin','thanaAdmin','unionAdmin','su
         'updateMyPass'
     ])->name('updateMyPass');
 });
+
+Route::get('/logout',[
+    FrontPanel::class,
+    'logout'
+])->name('logout');

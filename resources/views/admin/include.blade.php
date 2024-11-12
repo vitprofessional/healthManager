@@ -13,7 +13,7 @@
     <meta content="Health Manager BD" name="description" />
     <meta content="Virtual IT Professional" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('public/admin/velzon/html/default/') }}/assets/images/favicon-cpi.png">
+    <link rel="shortcut icon" href="{{ asset('public/') }}/favicon.png">
 
     <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
  
@@ -46,21 +46,21 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
+                    <a href="{{ url('/') }}" class="logo logo-dark mt-2" target="_blank">
                         <span class="logo-sm">
-                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                         </span>
                     </a>
 
                     <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
                         <span class="logo-sm">
-                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                         </span>
                     </a>
                 </div>
@@ -123,21 +123,21 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
-                <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
+                <a href="{{ url('/') }}" class="logo logo-dark mt-2" target="_blank">
                     <span class="logo-sm">
-                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
+                <a href="{{ url('/') }}" class="logo logo-light mt-2" target="_blank">
                     <span class="logo-sm">
-                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/front/') }}/healthLogo.png" class="rounded-circle" alt="" height="80">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -232,7 +232,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#">
+                            <a class="nav-link menu-link" href="{{ route('logout') }}">
                                 <i class="fa-regular fa-left-from-bracket"></i> <span data-key="t-apps">Logout</span>
                             </a>
                         </li>
